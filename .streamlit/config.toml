@@ -3,4 +3,5 @@ enableXsrfProtection = false
 
 [theme]
 base = "light"
-primaryColor = "pink"
+primaryColor = "#F2AFD2"
+secondaryBackgroundColor = "pink"
