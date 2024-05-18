@@ -62,16 +62,45 @@ def analyze_chat_data(chat_text):
 
 def generate_analysis(aspect, chat_text):
     llm = ChatUpstage(api_key=st.session_state.solar_api_key)
-
+    
+    opponent_info = st.session_state.opponent_info
+        # self.name = name
+        # self.gender = gender
+        # self.age = age
+        # self.occupation = occupation
+        # self.mbti = mbti
+        # self.hobby = hobby
+        # self.residence = residence
+        # self.relationship = relationship
+        # self.birthday = birthday
+        # self.liked_food = liked_food
+        # self.disliked_food = disliked_food
+    
     chat_prompt = PromptTemplate.from_template(
         """
         Analyze the chat data to determine the {aspect}.
         ---
         Context: {chat_text}
+        ---
+        Take this is the information about the person I'm interested in when analyzing the chat data:
+        Name is {name}, gender is {gender}
+        He/she is {age} years old.
+        He/she is a {occupation}.
+        His/her MBTI is {mbti}.
+        His/her hobby is {hobby}.
+        He/she lives in {residence}.
+        He/she is currently {relationship}.
+        His/her birthday is {birthday}.
+        His/her favorite food is {liked_food}.
+        He/she doesn't like {disliked_food}.
         """
     )
     
     chain = chat_prompt | llm | StrOutputParser()
-    response = chain.invoke({"aspect": aspect, "chat_text": chat_text})
+    response = chain.invoke({"aspect": aspect, "chat_text": chat_text, 
+                             "name": opponent_info.name, "gender": opponent_info.gender, 
+                             "age": opponent_info.age, "occupation": opponent_info.occupation, "mbti": opponent_info.mbti, 
+                             "hobby": opponent_info.hobby, "residence": opponent_info.residence, "relationship": opponent_info.relationship, 
+                             "birthday": opponent_info.birthday, "liked_food": opponent_info.liked_food, "disliked_food": opponent_info.disliked_food})
     
     return response
