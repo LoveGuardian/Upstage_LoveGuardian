@@ -40,3 +40,4 @@ def upload_opponent_info_page():
     if st.button("Register"):
         st.session_state.opponent_info = opponent_info
         st.session_state.page = "upload_chat"
+        st.experimental_rerun()
