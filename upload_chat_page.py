@@ -5,6 +5,7 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import PromptTemplate
 
 
+
 def upload_chat_page():
     st.title("Upload Your Chat")
     st.write("Upload your KakaoTalk chat file in .txt or csv format.")
@@ -12,19 +13,37 @@ def upload_chat_page():
 
     # I need to upload a KakaoTalk chat file in .csv format as well
     if uploaded_file:
-        chat_text = uploaded_file.read().decode("utf-8")
-        analysis = analyze_chat_data(chat_text)
+        if uploaded_file.type == "text/plain":
+            chat_text = uploaded_file.read().decode("utf-8")
+            st.session_state.chat_data = chat_text
+            analysis = analyze_chat_data(chat_text)
+            try:
+                chat_text = st.session_state.chat_data.split('\n')
+                chat_text = [line.split(',') for line in chat_text if line]
+                df = pd.DataFrame(chat_text, columns=["Date", "User", "Message"])                
+                # Separate User and Message from the User column
+                df[['User', 'Message']] = df['User'].str.split(':', 1, expand=True)
+                # Handle None values if splitting fails
+                df['User'] = df['User'].fillna('').apply(lambda x: x.split(':')[0])
+            except:
+                # it is possible that txt file not follow the format, then put entire text in the one column
+                # df = pd.DataFrame(chat_text)
+                df = None
 
-        st.session_state.chat_data = chat_text
+
+        elif uploaded_file.type == "csv":
+            df = pd.read_csv(uploaded_file)
+            chat_text = df.to_string(index=False)
+            st.session_state.chat_data = chat_text
+            analysis = analyze_chat_data(chat_text)
+            
+
+        if df is not None:
+            st.subheader("Uploaded Chat Data")
+            st.dataframe(df)
+
+       
         st.session_state.chat_analysis = analysis
-
-        # FIXME: the following if condition doesn't work.
-        # if uploaded_file.type == "txt":
-        #
-        # elif uploaded_file.type == "csv":
-        #     chat_data = pd.read_csv(uploaded_file)
-        #     st.session_state.chat_data = chat_data.to_string(index=False)
-        #     st.session_state.chat_analysis = {}
 
         if st.button("Upload"):
             st.session_state.page = "chatting_page"
