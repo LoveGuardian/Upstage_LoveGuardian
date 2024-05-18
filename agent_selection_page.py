@@ -10,9 +10,9 @@ AGENT_DESCRIPTIONS = {
 
 def agent_selection_page():
     st.title("Select Your Agents")
-    st.write("Choose up to 4 agents to help analyze your chat.")
+    st.write("Choose up to 2 agents to help analyze your chat.")
 
-    selected_agents = st.multiselect("Select Agents", list(AGENT_DESCRIPTIONS.keys()), max_selections=4)
+    selected_agents = st.multiselect("Select Agents", list(AGENT_DESCRIPTIONS.keys()), max_selections=2)
     for agent in selected_agents:
         st.write(f"**{agent}**: {AGENT_DESCRIPTIONS[agent]}")
 
