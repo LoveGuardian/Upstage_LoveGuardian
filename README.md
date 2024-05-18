@@ -63,7 +63,7 @@ AI 연애 코디네이터 Cupid Whisper
   </tr>
   <tr>
     <th align="center">기획+개발</th>
-    <th align="center">개발</th>
+    <th align="center">개발 & 배포</th>
     <th align="center">개발</th>
     <th align="center">개발</th>
   </tr>
