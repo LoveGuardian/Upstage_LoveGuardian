@@ -19,7 +19,7 @@ streamlit run main.py
       <img width="200" src = "https://avatars.githubusercontent.com/u/70048051?v=4"/>
     </td>
     <td>
-      <img width="200" src = "https://avatars.githubusercontent.com/u/108045487?v=4"/>
+      <img width="200" src = "https://avatars.githubusercontent.com/u/68544342?v=4"/>
     </td>
   </tr> 
   <tr>
