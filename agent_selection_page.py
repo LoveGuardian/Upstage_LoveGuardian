@@ -19,4 +19,4 @@ def agent_selection_page():
     if st.button("Next"):
         st.session_state.selected_agents = selected_agents
         st.session_state.page = "upload_opponent_info"
-        st.experimental_rerun()
+        st.rerun()

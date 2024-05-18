@@ -16,4 +16,4 @@ def upload_chat_page():
             st.session_state.chat_data = chat_data.to_string(index=False)
         if st.button("Upload"):
             st.session_state.page = "chatting_page"
-            st.experimental_rerun()
+            st.rerun()

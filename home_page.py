@@ -10,4 +10,4 @@ def home_page():
 
     if st.button("Get Started"):
         st.session_state.page = "agent_selection"
-        st.experimental_rerun()
+        st.rerun()
