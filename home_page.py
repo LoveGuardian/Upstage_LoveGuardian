@@ -2,7 +2,7 @@ import streamlit as st
 
 
 def home_page():
-    st.title("Welcome to LoveGuardians")
+    st.title("Welcome to Cupid Whisper ✨")
     st.write("Analyze your KakaoTalk chats with advice from four unique agents.")
 
     solar_api_key = st.text_input("Provide your Solar API Key: ")
