@@ -14,6 +14,10 @@ if "selected_agents" not in st.session_state:
     st.session_state.selected_agents = []
 if "chat_data" not in st.session_state:
     st.session_state.chat_data = ""
+if "chat_analysis" not in st.session_state:
+    st.session_state.chat_analysis = {}
+if "solar_api_key" not in st.session_state:
+    st.session_state.solar_api_key = ""
 
 # Navigation
 if st.session_state.page == "home":
