@@ -10,7 +10,8 @@ https://loveguardians.streamlit.app/
 
 
 ## 아이템 소개
-AI 연애 코디네이터 Cupid Whisper 
+AI 연애 코디네이터 Cupid Whisper! 
+
 카카오톡 대화 분석과 AI 에이전트들의 맞춤형 조언으로 연인 또는 썸 단계의 사람들의 행복한 연애를 도와주는 연애 코치
 
 ## 주요 기능
