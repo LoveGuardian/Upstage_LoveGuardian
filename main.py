@@ -18,6 +18,8 @@ if "chat_analysis" not in st.session_state:
     st.session_state.chat_analysis = {}
 if "solar_api_key" not in st.session_state:
     st.session_state.solar_api_key = ""
+if "conversation_history" not in st.session_state:
+    st.session_state.conversation_history = {}
 
 # Navigation
 if st.session_state.page == "home":
