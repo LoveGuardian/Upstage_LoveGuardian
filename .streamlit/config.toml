@@ -1,2 +1,6 @@
 [server]
 enableXsrfProtection = false
+
+[theme]
+base = "light"
+primaryColor = "pink"
