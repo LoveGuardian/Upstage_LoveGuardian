@@ -81,7 +81,7 @@ def generate_analysis(aspect, chat_text):
         ---
         Context: {chat_text}
         ---
-        Take this is the information about the person I'm interested in when analyzing the chat data:
+        Take this as the information about the person I'm interested in when analyzing the chat data:
         Name is {name}, gender is {gender}
         He/she is {age} years old.
         He/she is a {occupation}.
