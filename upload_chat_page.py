@@ -12,17 +12,19 @@ def upload_chat_page():
 
     # I need to upload a KakaoTalk chat file in .csv format as well
     if uploaded_file:
-        # if uploaded_file.type is txt
-        if uploaded_file.type == "txt":
-            chat_text = uploaded_file.read().decode("utf-8")
-            analysis = analyze_chat_data(chat_text)
+        chat_text = uploaded_file.read().decode("utf-8")
+        analysis = analyze_chat_data(chat_text)
 
-            st.session_state.chat_data = chat_text
-            st.session_state.chat_analysis = analysis
-        elif uploaded_file.type == "csv":
-            chat_data = pd.read_csv(uploaded_file)
-            st.session_state.chat_data = chat_data.to_string(index=False)
-            st.session_state.chat_analysis = {}
+        st.session_state.chat_data = chat_text
+        st.session_state.chat_analysis = analysis
+
+        # FIXME: the following if condition doesn't work.
+        # if uploaded_file.type == "txt":
+        #
+        # elif uploaded_file.type == "csv":
+        #     chat_data = pd.read_csv(uploaded_file)
+        #     st.session_state.chat_data = chat_data.to_string(index=False)
+        #     st.session_state.chat_analysis = {}
 
         if st.button("Upload"):
             st.session_state.page = "chatting_page"
