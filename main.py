@@ -3,6 +3,7 @@ import streamlit as st
 # Importing page functions
 from home_page import home_page
 from agent_selection_page import agent_selection_page
+from upload_opponent_info_page import upload_opponent_info_page
 from upload_chat_page import upload_chat_page
 from chatting_page import chatting_page
 
@@ -19,6 +20,8 @@ if st.session_state.page == "home":
     home_page()
 elif st.session_state.page == "agent_selection":
     agent_selection_page()
+elif st.session_state.page == "upload_opponent_info":
+    upload_opponent_info_page()
 elif st.session_state.page == "upload_chat":
     upload_chat_page()
 elif st.session_state.page == "chatting_page":
