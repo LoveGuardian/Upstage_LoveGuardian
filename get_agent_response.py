@@ -4,7 +4,7 @@ from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_upstage import ChatUpstage
 
-from agent_selection_page import AGENT_DESCRIPTIONS
+from agent_selection_page import AGENT_MANNER
 
 
 def get_agent_response(agent, user_input, chat_data):
@@ -20,7 +20,7 @@ def get_agent_response(agent, user_input, chat_data):
         Each region is separated by "-----------".
         
         Keep in mind that you are "{agent_type}" agent.
-        You should respond based on a "{agent_personality}" perspective.
+        {agent_manner}
         
         ----------
         <Chat>
@@ -37,12 +37,12 @@ def get_agent_response(agent, user_input, chat_data):
 
     # 3. define chain
     agent_type = agent
-    agent_personality = AGENT_DESCRIPTIONS[agent]
+    agent_manner = AGENT_MANNER[agent]
 
     response = chain.invoke(
         {
             "agent_type": agent_type,
-            "agent_personality": agent_personality,
+            "agent_manner": agent_manner,
             "chat": chat_data,
             "conversation": st.session_state.conversation_history.get(agent, ""),
             "question": user_input,
