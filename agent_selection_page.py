@@ -7,6 +7,12 @@ AGENT_DESCRIPTIONS = {
     "The Empath": "Compassionate, understanding, and emotionally intelligent."
 }
 
+AGENT_MANNER = {
+    "The Optimist": "Answer in an optimistic way. Emphasize the positive aspects of the situation more than the negative when answering. Provide me with the bright future in this situation.",
+    "The Realist": "Answer in a straightforward way. Punch me in the gut with the truth. Be honest and direct. Provide me with realistic view of the future.",
+    "The Analyst": "Answer in an analytical way using data. Provide me with logical reasoning and strategic advice.",
+    "The Empath": "Answer in an empathetic way. Show me that you understand my feelings and emotions. Provide me with emotional support."
+}
 
 def agent_selection_page():
     st.title("Select Your Agents")
