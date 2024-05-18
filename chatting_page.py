@@ -1,4 +1,5 @@
 import streamlit as st
+from get_agent_response import get_agent_response
 
 from agent_selection_page import AGENT_DESCRIPTIONS
 
@@ -18,7 +19,7 @@ def chatting_page():
 
     if user_input:
         # Placeholder for agent responses
-        responses = {agent: f"{agent} response to '{user_input}'" for agent in agents}
+        responses = {agent: get_agent_response(agent, user_input, chat_data) for agent in agents}
 
         st.subheader("Agent Responses")
         for agent, response in responses.items():
