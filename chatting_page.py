@@ -15,14 +15,23 @@ def chatting_page():
     chat_analysis = st.session_state.chat_analysis
 
     st.subheader("Chat Analysis")
-    st.write(f"Personality: {chat_analysis['personality']}")
-    st.write(f"Relationship Progress: {chat_analysis['relationship_progress']}")
-    st.write(f"Preferences: {chat_analysis['preferences']}")
-    st.write(f"Contact Frequency: {chat_analysis['contact_frequency']}")
+
+    with st.expander("Personality"):
+        st.write(f"Personality: {chat_analysis['personality']}")
+    
+    with st.expander("Relationship Progress"):
+        st.write(f"Relationship Progress: {chat_analysis['relationship_progress']}")
+    
+    with st.expander("Preferences"):
+        st.write(f"Preferences: {chat_analysis['preferences']}")
+    
+    with st.expander("Contact Frequency"):
+        st.write(f"Contact Frequency: {chat_analysis['contact_frequency']}")
 
     st.subheader("Agent Introductions")
     for agent in agents:
-        st.write(f"**{agent}**: {AGENT_DESCRIPTIONS[agent]}")
+        with st.expander(agent):
+            st.write(f"**{agent}**: {AGENT_DESCRIPTIONS[agent]}")
 
     user_input = st.text_input("Ask your question about the relationship:")
 
@@ -31,9 +40,11 @@ def chatting_page():
 
         st.subheader("Agent Responses")
         for agent, response in responses.items():
-            st.write(f"**{agent}**: {response}")
+            with st.expander(f"Response from {agent}"):
+                st.write(response)
 
         st.subheader("Consensus Options")
         consensus_options = ["Option 1", "Option 2", "Option 3"]
         for option in consensus_options:
             st.write(f"- {option}")
+
