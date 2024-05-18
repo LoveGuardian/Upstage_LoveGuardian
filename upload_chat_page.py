@@ -25,7 +25,7 @@ def upload_chat_page():
                 df[['User', 'Message']] = df['User'].str.split(':', 1, expand=True)
                 # Handle None values if splitting fails
                 df['User'] = df['User'].fillna('').apply(lambda x: x.split(':')[0])
-            except ValueError:
+            except:
                 # it is possible that txt file not follow the format, then put entire text in the one column
                 # df = pd.DataFrame(chat_text)
                 df = None
