@@ -42,9 +42,3 @@ def chatting_page():
         for agent, response in responses.items():
             with st.expander(f"Response from {agent}"):
                 st.write(response)
-
-        st.subheader("Consensus Options")
-        consensus_options = ["Option 1", "Option 2", "Option 3"]
-        for option in consensus_options:
-            st.write(f"- {option}")
-
